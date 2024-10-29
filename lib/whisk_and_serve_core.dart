@@ -5,3 +5,4 @@ export '/router/router.dart';
 export '/utils/breakpoints.dart';
 export 'entities/category.dart';
 export '/data/isar_helpers.dart';
+export './bloc/bloc_helpers.dart';
