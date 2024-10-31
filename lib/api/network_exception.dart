@@ -2,9 +2,14 @@ import 'package:dio/dio.dart';
 
 class NetworkException implements Exception {
   final String message;
+  final DioExceptionType type;
   final int? code;
 
-  NetworkException({required this.message, this.code});
+  NetworkException({
+    required this.message,
+    required this.type,
+    this.code,
+  });
 
   static const _errorMessages = {
     DioExceptionType.connectionTimeout: "Connection Timeout",
@@ -12,8 +17,10 @@ class NetworkException implements Exception {
     DioExceptionType.receiveTimeout: "Receive Timeout",
     DioExceptionType.cancel: "Request to API server was cancelled",
     DioExceptionType.unknown: "Unexpected error occurred",
-    DioExceptionType.badCertificate: "Bad certificate. Please check your network security.",
-    DioExceptionType.connectionError: "Connection error. Unable to reach the server.",
+    DioExceptionType.badCertificate:
+        "Bad certificate. Please check your network security.",
+    DioExceptionType.connectionError:
+        "Connection error. Unable to reach the server.",
   };
 
   factory NetworkException.fromDioError(DioException dioError) {
@@ -21,11 +28,19 @@ class NetworkException implements Exception {
 
     if (dioError.type == DioExceptionType.badResponse) {
       final statusCode = dioError.response?.statusCode;
-      final errorMsg = dioError.response?.data['message'] ?? "Something went wrong";
-      return NetworkException(message: errorMsg, code: statusCode);
+      final errorMsg =
+          dioError.response?.data['message'] ?? "Something went wrong";
+      return NetworkException(
+        message: errorMsg,
+        type: dioError.type,
+        code: statusCode,
+      );
     }
 
-    return NetworkException(message: defaultMessage);
+    return NetworkException(
+      message: defaultMessage,
+      type: dioError.type,
+    );
   }
 
   @override

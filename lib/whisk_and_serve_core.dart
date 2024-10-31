@@ -6,3 +6,6 @@ export '/utils/breakpoints.dart';
 export 'entities/category.dart';
 export '/data/isar_helpers.dart';
 export './bloc/bloc_helpers.dart';
+export './coms/message_type.dart';
+export './coms/generic_message.dart';
+export './coms/snackbar_handler.dart';
