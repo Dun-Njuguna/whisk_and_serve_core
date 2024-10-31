@@ -116,3 +116,14 @@ abstract class BaseBloc<E, S> extends Bloc<E, S> {
 void addBlocEvent<B extends BaseBloc>(BuildContext context, event) {
   context.read<B>().add(event);
 }
+
+
+/// Retrieves the current state of a specified BLoC from the provided context.
+///
+/// [context]: The [BuildContext] from which to retrieve the BLoC.
+/// 
+/// Returns the current state of the specified BLoC.
+/// Throws an [Exception] if the BLoC is not found in the context.
+S getCurrentState<B extends BaseBloc<dynamic, S>, S>(BuildContext context) {
+  return context.read<B>().state;
+}
