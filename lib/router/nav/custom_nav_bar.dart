@@ -83,17 +83,21 @@ class CustomNavBarState extends State<CustomNavBar> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          width: isSelected ? 120 : 90,
+          alignment: Alignment.center,
+          duration: const Duration(milliseconds: 100),
+          width: isSelected ? 110 : 90,
           height: 40,
+          curve: Curves.easeIn,
           decoration: BoxDecoration(
             color: isSelected
                 ? Theme.of(context).colorScheme.primary.withOpacity(0.8)
                 : Colors.grey[200],
             borderRadius: BorderRadius.circular(30),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Wrap(
+            alignment: WrapAlignment.center, // Centers the content horizontally
+            crossAxisAlignment:
+                WrapCrossAlignment.center, // Centers content vertically
             children: [
               Icon(
                 navItem.icon,

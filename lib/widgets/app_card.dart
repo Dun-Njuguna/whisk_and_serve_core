@@ -12,7 +12,7 @@ class AppCard extends StatelessWidget {
     required this.child,
     this.elevation = 8.0,
     this.margin,
-    this.borderRadius = const BorderRadius.all(Radius.circular(30)),
+    this.borderRadius = const BorderRadius.all(Radius.circular(10)),
   });
 
   @override
@@ -27,7 +27,10 @@ class AppCard extends StatelessWidget {
         borderRadius: borderRadius,
       ),
       margin: margin,
-      child: child,
+      child: ClipRRect(
+        borderRadius: borderRadius, // Apply the same border radius for clipping
+        child: child,
+      ),
     );
   }
 }
