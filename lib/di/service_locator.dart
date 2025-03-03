@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:whisk_and_serve_core/entities/category.dart';
+import 'package:whisk_and_serve_core/entities/explore/category.dart';
 
 final sl = GetIt.instance;
 

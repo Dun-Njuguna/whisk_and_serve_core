@@ -54,3 +54,13 @@ CustomTransitionPage buildPageWithTransition(
     reverseTransitionDuration: const Duration(milliseconds: 300),
   );
 }
+
+class NavigationHelper {
+  static void navigateTo(BuildContext context, String path) {
+    context.push(path);
+  }
+
+  static String getPathParameter(BuildContext context, String key) {
+    return GoRouterState.of(context).pathParameters[key] ?? 'Unknown';
+  }
+}
