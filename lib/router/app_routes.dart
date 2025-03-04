@@ -7,8 +7,11 @@ class AppRoutes {
   static const String profile = '/profile';
 
   // Explore Child Routes
-  static const String mealsPage = 'meals';
-  static const String meals = '$mealsPage/:category';
+  static const String meals = 'meals';
+  static const String mealsPage = '$meals/:category';
+  static const String mealDetails = '$meals/:mealId';
+
+  static const String mealDetailPathParam = ":mealId";
 }
 
 /// List of navigation items.

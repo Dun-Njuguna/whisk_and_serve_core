@@ -22,11 +22,23 @@ GoRouter router({required List<RouteBase> routes}) => GoRouter(
 GoRoute createGoRoute(AppRouteConfig config) {
   return GoRoute(
     path: config.parentPath,
-    pageBuilder: (context, state) => MaterialPage(child: config.parentWidget),
+    pageBuilder: (context, state) => MaterialPage(
+      child: config.parentWidget,
+    ),
     routes: config.childRoutes.map((child) {
       return GoRoute(
         path: child.path,
-        pageBuilder: (context, state) => MaterialPage(child: child.childWidget),
+        pageBuilder: (context, state) => MaterialPage(
+          child: child.childWidget,
+        ),
+        routes: child.childRoutes.map((subChild) {
+          return GoRoute(
+            path: subChild.path,
+            pageBuilder: (context, state) => MaterialPage(
+              child: subChild.childWidget,
+            ),
+          );
+        }).toList(),
       );
     }).toList(),
   );
@@ -62,5 +74,9 @@ class NavigationHelper {
 
   static String getPathParameter(BuildContext context, String key) {
     return GoRouterState.of(context).pathParameters[key] ?? 'Unknown';
+  }
+
+  static String getPath(BuildContext context) {
+    return GoRouterState.of(context).path ?? 'Unknown';
   }
 }

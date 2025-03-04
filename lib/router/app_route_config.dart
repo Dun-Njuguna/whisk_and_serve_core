@@ -16,9 +16,11 @@ class AppRouteConfig {
 class ChildRouteConfig {
   final String path;
   final Widget childWidget;
+  final List<ChildRouteConfig> childRoutes;
 
   ChildRouteConfig({
     required this.path,
     required this.childWidget,
+    this.childRoutes = const [],
   });
 }

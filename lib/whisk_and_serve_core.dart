@@ -4,6 +4,7 @@ export '/di/service_locator.dart';
 export '/router/router.dart';
 export '/utils/breakpoints.dart';
 export 'entities/explore/category.dart';
+export 'entities/explore/meal_details.dart';
 export '/data/isar_helpers.dart';
 export './bloc/bloc_helpers.dart';
 export './coms/message_type.dart';
